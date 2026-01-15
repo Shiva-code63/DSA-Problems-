@@ -1,0 +1,45 @@
+#include<bits/stdc++.h>
+using namespace std; 
+
+int pow_num(int num, int power){
+    int result = 1;
+    for (int i=0; i<power; i++){
+        result = result * num;                 //armstrong numbers
+    }
+    return result;
+}
+bool armstrong_num(int n){
+    if (n>=0){
+        long long sum=0;
+        int f = n;
+        int j = 0;
+        int g = n;
+        do {
+            g/=10;
+            j++;
+        }
+        while (g>0);
+        do {
+            int num = f%10;
+            sum = sum + pow_num(num,j);
+            f = f/10; 
+        }
+        while(f>0);
+        return sum == n; 
+    }
+    else{
+        return false;
+    }
+}
+int main(){
+    int n;
+    cout<<"Enter num: ";
+    cin>>n;
+    if (armstrong_num(n)){
+        cout<<"true";
+    }
+    else{
+        cout<<"false";
+    }
+    return 0;
+}
