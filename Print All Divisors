@@ -1,0 +1,15 @@
+class Solution {
+  public:
+    void print_divisors(int n) {
+        set<int>v1;
+        for (int i=1; i<=sqrt(n); i++){
+            if (n%i==0){
+                v1.emplace(i);
+                v1.emplace(n/i);
+            }
+        }
+        for (auto it: v1){
+            cout<<it<<" ";
+        }
+    }
+};
