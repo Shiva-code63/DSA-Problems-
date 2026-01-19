@@ -1,0 +1,19 @@
+class Solution {
+public:
+    bool isPalindrome(int x) {
+        long long rev=0;
+        int v=x;
+        if (x>=0){
+            while(v!=0){
+                int num = v%10;
+                rev = rev*10 + num;
+                v = v/10;
+            }
+            if (rev==x) return true;
+            return false;
+        }
+        else{
+            return false;
+        }
+    }
+};
