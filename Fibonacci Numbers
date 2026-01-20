@@ -1,0 +1,12 @@
+void print10(int i, int j, int n){
+    if (n==0) return ;
+    cout<< i << " ";
+    print10(j, i+j, n-1);
+}
+
+int main(){
+    int s;
+    cout<<"Enter num: ";
+    cin>>s;
+    print10(0, 1, s);
+}
