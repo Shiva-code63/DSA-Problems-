@@ -1,16 +1,24 @@
-class Solution {
-  public:
-    // Function to count the frequency of all elements from 1 to N in the array.
-    vector<int> frequencyCount(vector<int>& arr) {
-        int n = arr.size();
-        vector<int> hash(n+1,0);
-        for (int i=0; i<n; i++){
-            if (arr[i]>=1 && arr[i]<=n){
-                hash[arr[i]] += 1;
-            }
-        }
-        vector<int> result(hash.begin()+1, hash.end());
-        return result;
-        
+// Finding the frequency of elements of an array using map.
+
+int main(){
+    int n;
+    cout<<"Enter the no of elements in array: ";
+    cin>>n;
+    int arr[n]; 
+    for (int i=0; i<n; i++){
+        cin>>arr[i];                                           
     }
-};
+    map<int , int >m1;
+    for (int i=0; i<=n; i++ ){
+        m1[arr[i]]+=1;
+    }
+    int j;
+    cout<<"Enter the number of elements of you want to get frequency of: ";
+    cin>>j;
+    for (int i=0; i<j; i++){
+        int ch;
+        cout<<"Enter the number: ";
+        cin>>ch;
+        cout<<m1[ch]<<" "<<endl;
+    }
+}
