@@ -1,0 +1,25 @@
+// Recursion Bubble Sort
+void recur_bubble_sort(int arr[], int n){
+    if (n<=1) return;
+    for (int i=0; i<n-1; i++){
+        int max = i+1;
+        if (arr[i]>arr[max]){
+            swap(arr[max], arr[i]);
+        }
+    }
+    recur_bubble_sort(arr, n-1);
+}
+int main(){
+    int n;
+    cout<<"Enter the no of elements in array: ";
+    cin>>n;
+    int arr[n];
+    for(int i=0; i<n; i++){
+        cout<<"Enter the element: ";
+        cin>>arr[i];
+    }
+    recur_bubble_sort(arr, n);
+    for (int i=0; i<n; i++){
+        cout<<arr[i]<<" ";
+    }
+}
