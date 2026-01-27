@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        int n = nums.size();
+        unordered_map<int, int> m1;
+        for(int i=0; i<n; i++){
+            m1[nums[i]]+=1;                          // Copying all elements of nums in m1.
+        }
+        for (auto it: m1){
+            if (it.second == 1){                    // Finding the number whose frequency is one.
+                return it.first;
+            }
+        }
+        return -1;
+    }
+};
