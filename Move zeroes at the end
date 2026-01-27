@@ -5,12 +5,12 @@ public:
         int k=0;
         for (int i=0; i<n; i++){
             if (nums[i] != 0 ){
-                nums[k] = nums[i];
+                nums[k] = nums[i];             // Adding non-zero elements to array at first.
                 k+=1;
             }
         }
         for (int i=k; i<n; i++){
-            nums[i] = 0;
+            nums[i] = 0;                      // Adding zeroes to spaces which are left.
         }
     }
 };
