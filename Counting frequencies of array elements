@@ -8,9 +8,9 @@ int main(){
     for (int i=0; i<n; i++){
         cin>>arr[i];                                           
     }
-    map<int , int >m1;
+    map<int , int >m1;                   // Declaring a map.
     for (int i=0; i<=n; i++ ){
-        m1[arr[i]]+=1;
+        m1[arr[i]]+=1;                   // Adding elements to map as index the key and increaisng the value by 1.
     }
     int j;
     cout<<"Enter the number of elements of you want to get frequency of: ";
