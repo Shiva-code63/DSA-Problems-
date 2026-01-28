@@ -1,0 +1,35 @@
+// Longest Subarray with Sum K
+int long_sub_array(vector<int> arr, long long k){
+    map<long long, int> pre_map_sum;
+    int maxlen = 0;
+    long long sum = 0;
+    for (int i = 0; i<arr.size(); i++){
+        sum+=arr[i];                                                // Adding each  element to sum.
+        if (sum == k){
+            maxlen = max(maxlen, i+1);
+        }
+        long long rem = sum - k;                                     
+        if (pre_map_sum.find(rem) != pre_map_sum.end()){           // Checking whether the sum exists in the map.
+            int len = i - pre_map_sum[rem];
+            maxlen = max(maxlen, len);                             
+        }
+        if (pre_map_sum.find(sum) == pre_map_sum.end()){
+            pre_map_sum[sum] = i;
+        }
+    }
+    return maxlen;                                                // Returning the maximum length of the subarray.
+}
+int main(){
+    int n;
+    cout<<"Enter the number of elements: ";
+    cin>>n;
+    vector<int> nums(n);
+    for (int i=0; i<n; i++){
+        cout<<"Enter the element: ";
+        cin>>nums[i];
+    }
+    int n1;
+    cout<<"Enter the target number: ";
+    cin>>n1;
+    cout<<long_sub_array(nums , n1);
+}
