@@ -1,4 +1,4 @@
-// Longest Subarray with Sum K
+// Length of longest Subarray(containing positive, negative and zeroes) with Sum K 
 int long_sub_array(vector<int> arr, long long k){
     map<long long, int> pre_map_sum;
     int maxlen = 0;
