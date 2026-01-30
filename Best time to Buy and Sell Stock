@@ -1,0 +1,15 @@
+// Best time to Buy and Sell Stock.
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int n = prices.size();
+        long minPrice = LONG_MAX;
+        long maxProfit = 0;
+        for (int i=0; i<n; i++){
+            minPrice = min(minPrice, (long)prices[i]);          // Comparing every element with minPrice.
+            long profit = (long)prices[i] - minPrice;           // Getting profit if sold on same of buy.
+            maxProfit = max(maxProfit, (long)profit);           // Comparing daily sellinng profit and maxProfit.
+        }
+        return maxProfit;
+    }
+};
