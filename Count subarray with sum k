@@ -1,0 +1,18 @@
+// Count Subarray with sum k
+class Solution {
+  public:
+    int cntSubarrays(vector<int> &arr, int k) {
+        int n = arr.size();
+        int cnt = 0;
+        unordered_map<int,int> m1;
+        m1[0] = 1;
+        int preSum = 0;
+        for (int i=0; i<n; i++){
+            preSum += arr[i];                 // Here we add each element to the prefix sum.
+            int rem = preSum - k;             // Here we create an integer which we will check in the hasmap m1.
+            cnt = cnt + m1[rem];              // if the hasmap has that remainig sum this means that has been seen in the map and now it's value will be added in the cnt variable.
+            m1[preSum] += 1;                  // Here, we add each prefix sum with a value 1 and will increase if it already exists (This prefix sum will be useful in above line).
+        }
+        return cnt;
+    }
+};
