@@ -1,0 +1,53 @@
+// Minimum Number of Days to Make m Bouquets
+class Solution {
+    int mini_num(vector<int>&nums){
+        int ans = INT_MAX;
+        for (int i=0; i<nums.size(); i++){
+            ans = min(ans, nums[i]);
+        }
+        return ans;
+    }
+    int max_num(vector<int>&nums){
+        int ans = INT_MIN;
+        for (int i=0; i<nums.size(); i++){
+            ans = max(ans, nums[i]);
+        }
+        return ans;
+    }
+    int minimum_day(vector<int>&nums, int h, int k ){
+        int g = 0;
+        int d = 0;
+        for (int i=0; i<nums.size(); i++){
+            if (nums[i] <= h){
+                d+=1;
+                if (d == k){
+                    g++;
+                    d = 0; 
+                } 
+            }
+            else{
+                d = 0;
+            }
+        }
+        return g;
+    }
+  public:
+    int minDaysBloom(vector<int>& arr, int k, int m) {
+        if (((long long)m*(long long)k)> (long long)arr.size()) return -1;
+        int low = mini_num(arr);
+        int high = max_num(arr);
+        int no_of_boq = 0;
+        int ans = -1;
+        while (low<=high){
+            int mid = low +  (high-low)/2;
+            int day_num = minimum_day(arr, mid, k);
+            if (day_num >= m){
+                ans = mid;
+                high = mid-1;
+            }
+            else {
+                low = mid+1;
+            }
+        }return ans;
+    }
+};
