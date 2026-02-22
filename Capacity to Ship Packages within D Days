@@ -1,0 +1,49 @@
+// Capacity to Ship Packages within D Days
+class Solution {
+    int maxi(vector<int>&nums){
+        int maxi_ele = nums[0];
+        for (int i=0; i<nums.size(); i++){
+            maxi_ele = max(maxi_ele, nums[i]);
+        }
+        return maxi_ele;
+    }
+    int sumu(vector<int>&nums){
+        int sum = 0;{
+            for (int i=0; i<nums.size(); i++){
+                sum += nums[i];
+            }
+        }
+        return sum;
+    }
+    bool true_false(vector<int>&nums, int mid, int no_days){
+        int day = 1;
+        int sum = 0;
+        int i = 0;
+        for (int i=0; i<nums.size(); i++){
+            if (sum + nums[i] > mid){
+                day++;
+                sum = 0;
+            }
+            sum += nums[i];
+        }
+        if (day <= no_days) return true ;
+        else return false;
+    }
+public:
+    int shipWithinDays(vector<int>& weights, int days) {
+        int low = maxi(weights);
+        int high = sumu(weights);
+        int ans = -1;
+        while (low<=high){
+            int mid = low + (high-low)/2;
+            if (true_false(weights, mid, days)){
+                ans = mid;
+                high = mid-1;
+            }
+            else {
+                low= mid+1;
+            }
+        }
+        return ans;
+    }
+};
