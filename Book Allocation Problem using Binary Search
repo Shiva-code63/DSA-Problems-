@@ -1,0 +1,50 @@
+// Book Allocation Problem using Binary Search
+class Solution {
+    int maxi(vector<int>&nums){
+        int maxu = nums[0];
+        for (int i=0; i<nums.size(); i++){
+            maxu = max(maxu, nums[i]);
+        }
+        return maxu;
+    }
+    int sum_of(vector<int>&nums){
+        int sum = 0;
+        for (int i=0; i<nums.size(); i++){
+            sum += nums[i];
+        }
+        return sum;
+    }
+    bool true_false(vector<int> &nums, int mid, int m){
+        int sum = 0;
+        int ans = 1;
+        for (int i=0; i<nums.size(); i++){
+            if (sum + nums[i] > mid){
+                ans++;
+                sum = nums[i];
+            }
+            else{
+                sum += nums[i];
+            }
+        }
+        if (ans <= m) return true;
+        else return false;
+    }
+  public:
+    int findPages(vector<int> &arr, int k) {
+        if (k > arr.size()) return -1;
+        int low = maxi(arr);
+        int high = sum_of(arr);
+        int ans = -1;
+        while (low <= high){
+            int mid = low + (high - low)/2;
+            if (true_false(arr, mid, k)){
+                ans = mid;
+                high = mid-1;
+            }
+            else {
+                low = mid+1;
+            }
+        }
+        return ans;
+    }
+};
