@@ -1,0 +1,49 @@
+// Split Array Largest Sum
+class Solution {
+    int maxu(vector<int> &nums){
+        int maxi = nums[0];
+        for (int i=0; i<nums.size(); i++){
+            maxi = max(maxi , nums[i]);
+        }
+        return maxi;
+    }
+    int sum_of(vector<int> &nums){
+        int sum = 0;
+        for (int i=0; i<nums.size(); i++){
+            sum += nums[i];
+        }
+        return sum;
+    }
+    bool true_false(vector<int> &nums, int mid, int k){
+        int ans = 1;
+        int sum = 0;
+        for (int i=0; i<nums.size(); i++){
+            if (sum + nums[i] > mid){
+                ans++;
+                sum = nums[i];
+            }
+            else {
+                sum += nums[i];
+            }
+        }
+        if (ans <= k) return true;
+        else return false;
+    }
+public:
+    int splitArray(vector<int>& nums, int k) {
+        int low = maxu(nums);
+        int high = sum_of(nums);
+        int ans = 0;
+        while (low <= high){
+            int mid = low + (high - low)/2;
+            if (true_false(nums, mid, k)){
+                high = mid-1;
+                ans = mid;
+            }
+            else {
+                low = mid+1;
+            }
+        }
+        return ans;
+    }
+};
