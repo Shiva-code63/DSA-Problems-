@@ -1,0 +1,30 @@
+// Minimize Max Distance to Gas Station
+class Solution {
+    bool true_false(vector<int> &nums, long double mid, int k){
+        int ans = 0;
+        for (int i=1; i<nums.size(); i++){
+            long double diff = nums[i] - nums[i-1];
+            ans += diff/mid;
+        }
+        if (ans > k) return false;
+        else return true;
+        }
+  public:
+    double minMaxDist(vector<int> &stations, int K) {
+        int n = stations.size();
+        long double low = 0;
+        long double high = stations[n-1];
+        long double ans = -1;
+        while (high - low > 1e-6){
+            long double mid = low + (high - low)/2.0;
+            if (true_false(stations, mid, K)){
+                ans = mid;
+                high = mid;
+            }
+            else {
+                low = mid;
+            }
+        }
+        return ans;
+    }
+};
