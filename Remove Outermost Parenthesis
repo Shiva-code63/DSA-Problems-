@@ -1,0 +1,24 @@
+// Remove Outermost Parenthesis
+class Solution {
+  public:
+    string removeOuter(string& s) {
+        int n = s.size();
+        int level = 0;
+        string st = "";
+        for (char ch : s){
+            if (ch == '('){
+                level++;
+                if (level > 1){ 
+                    st += ch;
+                }
+            }
+            else if (ch == ')'){
+                level--;
+                if (level > 0){
+                    st += ch;
+                }
+            }
+        }
+        return st;
+    }
+};
