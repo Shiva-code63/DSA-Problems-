@@ -1,0 +1,21 @@
+// Sort Characters By Frequency in Descending order
+class Solution {
+public:
+    string frequencySort(string s) {
+        int n = s.size();
+        unordered_map<char, int> st;
+        for (int i=0; i<n; i++){
+            st[s[i]]++;
+        }
+        vector<pair<char, int>> str(st.begin(), st.end());
+        sort(str.begin(), str.end(), [](auto &a, auto &b){
+            return a.second > b.second;
+        });
+        string result;
+        for (auto &it : str){
+            result.append(it.second, it.first);
+        }
+        return result;
+    
+    }
+};
