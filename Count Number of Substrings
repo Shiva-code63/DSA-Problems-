@@ -1,0 +1,18 @@
+// Count Number of Substrings
+class Solution {
+  public:
+    int countSubstring(string s) {
+        int n = s.size();
+        int cnt = 0;
+        unordered_map<int, int> st = {{0,-1}, {1,-1}, {2,-1}};
+        for (int i =0; i<n; i++){
+            st[s[i] - 'a'] = i;
+            if (st[0] != -1 && st[1] != -1 && st[2] != -1){
+                cnt = cnt + 1 + min(st[0], min(st[1], st[2])); 
+            }
+        }
+        return cnt;
+    }  
+
+};
+
