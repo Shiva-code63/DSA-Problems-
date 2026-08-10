@@ -1,0 +1,15 @@
+// Find Missing Number
+class Solution {
+  public:
+    int missingNum(vector<int>& arr) {
+         int n = arr.size()+1;
+         int ans = 0;
+         for (int i=1; i<=n; i++){
+             ans = ans^i;
+         }
+         for (auto it : arr){
+             ans = ans^it;
+         }
+         return ans;
+    }
+};
